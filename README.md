@@ -192,29 +192,30 @@ Este é um projeto em desenvolvimento. Contribuições são bem-vindas!
 
 ## 📞 Próximos Passos
 
-1. **Ler a documentação**
-   - [Análise do Frontend](./docs/ANALISE_FRONTEND.md)
-   - [Arquitetura Proposta](./docs/ARQUITETURA_PROPOSTA.md)
+### 🚀 Pronto para Deploy?
 
-2. **Decidir a arquitetura**
-   - Opção A: Supabase (rápido)
-   - Opção B: Backend próprio (escalável)
-   - Opção C: Híbrido (flexível)
+**➡️ Comece aqui:** [PROXIMOS_PASSOS.md](./PROXIMOS_PASSOS.md)
 
-3. **Configurar ambiente**
-   - Criar projeto Supabase
-   - Obter OpenAI API Key
-   - Configurar variáveis de ambiente
+Este arquivo tem:
+- ✅ Checklist completo de deploy
+- ✅ Todas as credenciais necessárias
+- ✅ Links diretos para cada etapa
+- ✅ Tempo estimado de cada passo
 
-4. **Executar setup**
-   - Rodar scripts SQL
-   - Instalar dependências
-   - Testar localmente
+### 📖 Ou siga o fluxo completo:
 
-5. **Deploy**
-   - Vercel/Netlify para frontend
-   - Configurar domínio
-   - Testar em produção
+1. **Setup e Deploy (60-90 min)**
+   - [Guia de Deploy Completo](./setup/DEPLOY_COMPLETO.md) - Passo a passo do zero à produção
+   - Ou execute: `bash setup/setup.sh` - Script automático
+
+2. **Customizar (conforme necessário)**
+   - [Guia de Customização](./docs/GUIA_CUSTOMIZACAO_DETALHADO.md) - Como personalizar tudo
+   - [Exemplos Práticos](./docs/EXEMPLOS_PRATICOS.md) - Código pronto para usar
+
+3. **Entender o Sistema (opcional)**
+   - [Detalhamento Técnico](./docs/DETALHAMENTO_TECNICO.md) - Como funciona internamente
+   - [Análise do Frontend](./docs/ANALISE_FRONTEND.md) - Visão geral
+   - [Arquitetura Proposta](./docs/ARQUITETURA_PROPOSTA.md) - Opções de arquitetura
 
 ---
 
