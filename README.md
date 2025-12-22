@@ -6,9 +6,15 @@ Sistema completo de suporte ao cliente com inteligência artificial, tickets aut
 
 ## 📚 Documentação
 
+### Análise e Arquitetura
 - **[Análise do Frontend](./docs/ANALISE_FRONTEND.md)** - Análise técnica completa do repositório v0-ai-support-platform
 - **[Arquitetura Proposta](./docs/ARQUITETURA_PROPOSTA.md)** - Proposta de arquitetura e integração do sistema
-- **[Guia de Setup](./setup/GUIA_SETUP.md)** - Guia passo a passo para configuração (em breve)
+- **[Detalhamento Técnico](./docs/DETALHAMENTO_TECNICO.md)** - Como tudo funciona internamente (fluxos, APIs, banco de dados)
+
+### Guias Práticos
+- **[Guia de Setup Rápido](./setup/GUIA_SETUP_RAPIDO.md)** - Configure o sistema em 30-60 minutos
+- **[Guia de Customização](./docs/GUIA_CUSTOMIZACAO_DETALHADO.md)** - Como personalizar cada aspecto do sistema
+- **[Exemplos Práticos](./docs/EXEMPLOS_PRATICOS.md)** - Código pronto para copiar e usar
 
 ---
 
@@ -125,11 +131,12 @@ suportesystem/
 |------------|--------|-----------|
 | Análise do Frontend | ✅ Concluído | 100% |
 | Proposta de Arquitetura | ✅ Concluído | 100% |
-| Setup do Supabase | ⏳ Pendente | 0% |
-| Configuração de Env | ⏳ Pendente | 0% |
-| Deploy | ⏳ Pendente | 0% |
-| Customização | ⏳ Pendente | 0% |
-| Testes | ⏳ Pendente | 0% |
+| Detalhamento Técnico | ✅ Concluído | 100% |
+| Guia de Setup | ✅ Concluído | 100% |
+| Guia de Customização | ✅ Concluído | 100% |
+| Exemplos Práticos | ✅ Concluído | 100% |
+| Setup do Supabase | ⏳ Próximo | 0% |
+| Deploy | ⏳ Próximo | 0% |
 
 ---
 
