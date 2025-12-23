@@ -1,0 +1,19 @@
+{
+  "buildCommand": "cd frontend-platform && pnpm install && pnpm build",
+  "outputDirectory": "frontend-platform/.next",
+  "framework": "nextjs",
+  "installCommand": "cd frontend-platform && pnpm install",
+  "devCommand": "cd frontend-platform && pnpm dev",
+  "regions": ["gru1"],
+  "functions": {
+    "frontend-platform/app/api/**/*.ts": {
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/frontend-platform/$1"
+    }
+  ]
+}
