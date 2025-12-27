@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "cd frontend-platform && pnpm dev",
-    "build": "cd frontend-platform && pnpm install && pnpm build",
+    "build": "cd frontend-platform && pnpm build",
     "start": "cd frontend-platform && pnpm start",
     "install:frontend": "cd frontend-platform && pnpm install",
     "clean": "cd frontend-platform && rm -rf .next node_modules && pnpm install",
