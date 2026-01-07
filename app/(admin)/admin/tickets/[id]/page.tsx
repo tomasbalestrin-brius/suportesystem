@@ -9,6 +9,7 @@ import { ptBR } from "date-fns/locale"
 import Link from "next/link"
 import { TicketMessages } from "@/components/admin/ticket-messages"
 import { TicketActions } from "@/components/admin/ticket-actions"
+import { cn } from "@/lib/utils"
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -57,21 +58,21 @@ export default async function TicketDetailPage({ params }: PageProps) {
     <div className="min-h-screen bg-background">
       <AdminNav unreadCount={unreadNotifications || 0} />
 
-      <main className="container mx-auto p-6 space-y-6">
-        <div className="flex items-center gap-4">
+      <main className="container mx-auto p-4 sm:p-6 space-y-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <Link href="/admin/tickets">
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="flex-shrink-0">
               <ArrowLeft className="h-5 w-5" />
             </Button>
           </Link>
-          <div className="flex-1">
-            <h1 className="text-3xl font-bold">Ticket {ticket.ticket_number}</h1>
-            <p className="text-muted-foreground">{ticket.subject}</p>
+          <div className="flex-1 min-w-0">
+            <h1 className="text-2xl sm:text-3xl font-bold truncate">Ticket {ticket.ticket_number}</h1>
+            <p className="text-muted-foreground text-sm sm:text-base line-clamp-2">{ticket.subject}</p>
           </div>
-          <Badge className={statusColors[ticket.status]}>{statusLabels[ticket.status]}</Badge>
+          <Badge className={cn("flex-shrink-0", statusColors[ticket.status])}>{statusLabels[ticket.status]}</Badge>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-3 xl:grid-cols-[1fr_400px]">
           <div className="lg:col-span-2 space-y-6">
             <Card>
               <CardHeader>

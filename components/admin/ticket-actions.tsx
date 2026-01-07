@@ -5,7 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { CheckCircle2, AlertCircle } from "lucide-react"
 
 interface TicketActionsProps {
   ticketId: string
@@ -15,17 +16,39 @@ interface TicketActionsProps {
 export function TicketActions({ ticketId, currentStatus }: TicketActionsProps) {
   const [status, setStatus] = useState(currentStatus)
   const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const router = useRouter()
+
+  // Reset status when currentStatus changes (page refresh)
+  useEffect(() => {
+    setStatus(currentStatus)
+  }, [currentStatus])
 
   const handleStatusUpdate = async () => {
     setLoading(true)
+    setSuccess(false)
+    setError(null)
+
     try {
       const supabase = createClient()
-      await supabase.from("tickets").update({ status }).eq("id", ticketId)
+      const { error: updateError } = await supabase
+        .from("tickets")
+        .update({ status, updated_at: new Date().toISOString() })
+        .eq("id", ticketId)
 
-      router.refresh()
+      if (updateError) throw updateError
+
+      setSuccess(true)
+
+      // Wait a bit to show success message
+      setTimeout(() => {
+        router.refresh()
+        setSuccess(false)
+      }, 1000)
     } catch (error) {
-      console.error("[v0] Failed to update ticket status:", error)
+      console.error("Failed to update ticket status:", error)
+      setError("Erro ao atualizar status. Tente novamente.")
     } finally {
       setLoading(false)
     }
@@ -40,7 +63,7 @@ export function TicketActions({ ticketId, currentStatus }: TicketActionsProps) {
       <CardContent className="space-y-4">
         <div className="space-y-2">
           <label className="text-sm font-medium">Status do Ticket</label>
-          <Select value={status} onValueChange={setStatus}>
+          <Select value={status} onValueChange={setStatus} disabled={loading}>
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
@@ -55,7 +78,25 @@ export function TicketActions({ ticketId, currentStatus }: TicketActionsProps) {
           </Select>
         </div>
 
-        <Button onClick={handleStatusUpdate} disabled={loading || status === currentStatus} className="w-full">
+        {error && (
+          <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 p-3 rounded-md">
+            <AlertCircle className="h-4 w-4" />
+            <span>{error}</span>
+          </div>
+        )}
+
+        {success && (
+          <div className="flex items-center gap-2 text-sm text-green-600 bg-green-50 p-3 rounded-md">
+            <CheckCircle2 className="h-4 w-4" />
+            <span>Status atualizado com sucesso!</span>
+          </div>
+        )}
+
+        <Button
+          onClick={handleStatusUpdate}
+          disabled={loading || status === currentStatus}
+          className="w-full"
+        >
           {loading ? "Atualizando..." : "Atualizar Status"}
         </Button>
       </CardContent>
